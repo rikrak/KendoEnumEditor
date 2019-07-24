@@ -1,0 +1,11 @@
+﻿@using KendoEnumEditor.Infrastructure
+@model KendoEnumEditor.Models.DeliveryType
+
+@(
+    Html.Kendo().DropDownListFor(m => m)
+        .DataTextField("Text")
+        .DataValueField("Value")
+        .BindTo(Model.ToSelectList("Please Select..."))
+        .Value(Model.ToString())
+        .Deferred()
+)

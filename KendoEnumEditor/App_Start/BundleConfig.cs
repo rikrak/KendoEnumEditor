@@ -22,7 +22,22 @@ namespace KendoEnumEditor
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                      "~/Content/bootstrap.css",
-                     "~/Content/Site.css"));
+                     "~/Content/Site.css",
+                     "~/Content/kendo/2018.3.1017/kendo.common.min.css",
+                     //"~/Content/kendo.compatibility.css", // should come after kendo.common.min.css apparently
+                     "~/Content/kendo/2018.3.1017/kendo.dataviz.min.css",
+                     "~/Content/kendo/2018.3.1017/kendo.default.min.css",
+                     "~/Content/kendo/2018.3.1017/kendo.dataviz.default.min.css",
+                     "~/Content/kendo/2018.3.1017/Site.css"
+                     ));
+
+            bundles.Add(new ScriptBundle("~/bundles/kendo")
+                .Include(
+                    "~/scripts/kendo/2018.3.1017/kendo.all.min.js",
+                    "~/scripts/kendo/2018.3.1017/jszip.min.js",
+                    "~/scripts/kendo/2018.3.1017/kendo.aspnetmvc.min.js"
+                )
+            );
         }
     }
 }

@@ -1,0 +1,17 @@
+﻿@using KendoEnumEditor.Models
+@model DeliveryOptionsViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Delivery option</h2>
+
+@Html.ValidationSummary()
+
+
+@using (Html.BeginForm())
+{
+    @Html.Partial("EditorTemplates/_DeliveryOptionsPopup", Model)
+
+    <input type="submit" value="Save"/>
+}

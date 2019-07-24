@@ -44,6 +44,9 @@
     <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Kendo.Mvc">
+      <HintPath>..\lib\KENDOUIMVC\2018.3.1017.545\Kendo.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -99,9 +102,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DeliveryOptionsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\EnumExtensions.cs" />
+    <Compile Include="Models\DeliveryOptionsViewModel.cs" />
+    <Compile Include="Models\DeliveryType.cs" />
+    <Compile Include="Models\DayOfWeek.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -449,6 +457,7 @@
     <Content Include="Content\kendo\2018.3.1017\Uniform\sprite_2x.png" />
     <Content Include="Content\kendo\2018.3.1017\Uniform\sprite_kpi.png" />
     <Content Include="Content\kendo\2018.3.1017\Uniform\sprite_kpi_2x.png" />
+    <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
@@ -845,11 +854,16 @@
     <Content Include="Scripts\kendo\2018.3.1017\kendo.virtuallist.min.js.map" />
     <Content Include="Scripts\kendo\2018.3.1017\kendo.web.min.js.map" />
     <Content Include="Scripts\kendo\2018.3.1017\kendo.window.min.js.map" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DeliveryType.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DayOfWeek.cshtml" />
+    <Content Include="Views\DeliveryOptions\Index.cshtml" />
+    <Content Include="Views\DeliveryOptions\EditorTemplates\_DeliveryOptionsPopup.cshtml" />
+    <Content Include="Views\DeliveryOptions\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />

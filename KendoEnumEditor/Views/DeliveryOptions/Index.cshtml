@@ -1,0 +1,71 @@
+﻿@using KendoEnumEditor.Models
+@{
+    const string gridId = "OptionsGrid";
+}
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+    @Html.ValidationSummary()
+    <br />
+@(Html.Kendo().Grid<DeliveryOptionsViewModel>()
+      .Name(gridId)
+      .EnableCustomBinding(true)
+      .Columns(col =>
+      {
+          col.Bound(c => c.ChosenDay).Title("Chosen Day");
+          col.Bound(c => c.Type).Title("Delivery Type");
+          col.Command(act =>
+          {
+              act.Edit()
+                  .Text("Edit")
+                  .UpdateText(" ");
+              act.Custom("editOnPage")
+                  .HtmlAttributes(new{ data_action="editOnPage"})
+                  .Text("Edit on page");
+      }).Title("").Width("10%");
+        })
+      .Editable(edit => edit
+          .Mode(GridEditMode.PopUp).Window(win => win
+              .Resizable()
+              .Animation(true)
+              .Width(620)
+          )
+          .TemplateName("_DeliveryOptionsPopUp")
+      )
+      .Pageable(
+          p => p
+              .PageSizes(new[] { 10, 20, 50, 100 })
+      )
+      .DataSource(ds => ds
+              .Ajax()
+              .Model(model => model.Id(c => c.Id))
+              .ServerOperation(true)
+              .Read(read => read.Action("ReadAll", "DeliveryOptions"))
+              .Update(update => update.Action("Update", "DeliveryOptions"))
+      )
+      .Deferred()
+)
+
+@section scripts
+{
+    <script>
+
+        $(document).ready(function () {
+            var $gridElement = $('#@gridId');
+            var kGrid = $gridElement.data('kendoGrid');
+
+            $gridElement.on('click', '[data-action="editOnPage"]', function(e) {
+                e.preventDefault();
+                var tr = $(e.target).closest("tr"); //get the row for deletion
+                var data = kGrid.dataItem(tr);
+
+                var targetUrl = '@Url.Action("Edit")?id=' + data.Id;
+                window.location = targetUrl;
+            });
+        });
+
+    </script>
+}
