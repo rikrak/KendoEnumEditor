@@ -13,7 +13,9 @@
             Type = type;
         }
         public int Id { get; set; }
+
         public DayOfWeek ChosenDay { get; set; }
+
         public DeliveryType Type { get; set; }
     }
 }

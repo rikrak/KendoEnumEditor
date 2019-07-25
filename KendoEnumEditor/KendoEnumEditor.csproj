@@ -109,6 +109,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\EnumExtensions.cs" />
+    <Compile Include="Models\DeliveryOptionsGridViewModel.cs" />
     <Compile Include="Models\DeliveryOptionsViewModel.cs" />
     <Compile Include="Models\DeliveryType.cs" />
     <Compile Include="Models\DayOfWeek.cs" />
@@ -892,6 +893,8 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Shared\EditorTemplates\DayOfWeekGridEditor.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DeliveryTypeGridEditor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

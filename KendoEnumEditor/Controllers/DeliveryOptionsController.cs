@@ -35,7 +35,7 @@ namespace KendoEnumEditor.Controllers
         }
 
         [HttpPost]
-        public ActionResult Update([DataSourceRequest] DataSourceRequest request, DeliveryOptionsViewModel viewModel)
+        public ActionResult Update([DataSourceRequest] DataSourceRequest request, DeliveryOptionsGridViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -54,7 +54,8 @@ namespace KendoEnumEditor.Controllers
         {
             var item = GetData().Single(d => d.Id == id);
 
-            return View(item);
+            var viewModel = new DeliveryOptionsViewModel(item.Id, item.ChosenDay, item.Type);
+            return View(viewModel);
         }
 
         [HttpPost]
@@ -72,9 +73,9 @@ namespace KendoEnumEditor.Controllers
             return RedirectToAction("Index");
         }
 
-        private List<DeliveryOptionsViewModel> GetData()
+        private List<DeliveryOptionsGridViewModel> GetData()
         {
-            return this.HttpContext.Session["MyData"] as List<DeliveryOptionsViewModel>;
+            return this.HttpContext.Session["MyData"] as List<DeliveryOptionsGridViewModel>;
         }
 
         private void SetupData()
@@ -82,12 +83,12 @@ namespace KendoEnumEditor.Controllers
             var data = GetData();
             if (data == null)
             {
-                this.HttpContext.Session["MyData"] = new List<DeliveryOptionsViewModel>()
+                this.HttpContext.Session["MyData"] = new List<DeliveryOptionsGridViewModel>()
                 {
-                    new DeliveryOptionsViewModel(1, DayOfWeek.Monday, DeliveryType.Courier),
-                    new DeliveryOptionsViewModel(2, DayOfWeek.Tuesday, DeliveryType.Courier),
-                    new DeliveryOptionsViewModel(3, DayOfWeek.Wednesday, DeliveryType.Personal),
-                    new DeliveryOptionsViewModel(4, DayOfWeek.Saturday, DeliveryType.Electronic),
+                    new DeliveryOptionsGridViewModel(1, DayOfWeek.Monday, DeliveryType.Courier),
+                    new DeliveryOptionsGridViewModel(2, DayOfWeek.Tuesday, DeliveryType.Courier),
+                    new DeliveryOptionsGridViewModel(3, DayOfWeek.Wednesday, DeliveryType.Personal),
+                    new DeliveryOptionsGridViewModel(4, DayOfWeek.Saturday, DeliveryType.Electronic),
                 };
             }
         }

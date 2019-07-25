@@ -1,0 +1,6 @@
+﻿@model KendoEnumEditor.Models.DayOfWeek
+
+@(Html.Kendo()
+      .DropDownListFor(m => m)
+      .BindTo(Enum.GetNames(typeof(DayOfWeek)).ToList())
+      )

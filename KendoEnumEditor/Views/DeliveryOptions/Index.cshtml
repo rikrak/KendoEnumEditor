@@ -10,7 +10,7 @@
 
     @Html.ValidationSummary()
     <br />
-@(Html.Kendo().Grid<DeliveryOptionsViewModel>()
+@(Html.Kendo().Grid<DeliveryOptionsGridViewModel>()
       .Name(gridId)
       .EnableCustomBinding(true)
       .Columns(col =>

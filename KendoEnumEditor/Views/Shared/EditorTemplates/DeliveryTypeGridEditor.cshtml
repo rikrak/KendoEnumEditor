@@ -1,0 +1,7 @@
+﻿@using KendoEnumEditor.Infrastructure
+@model KendoEnumEditor.Models.DeliveryType
+
+@(Html.Kendo()
+      .DropDownListFor(m => m)
+      .BindTo(Enum.GetNames(typeof(KendoEnumEditor.Models.DeliveryType)).ToList())
+      )

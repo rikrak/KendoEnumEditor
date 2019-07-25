@@ -11,7 +11,23 @@
 
 @using (Html.BeginForm())
 {
-    @Html.Partial("EditorTemplates/_DeliveryOptionsPopup", Model)
+    <div class="editor-panel">
+        <div class="editor-row">
+            <div class="editor-field-label">@Html.LabelFor(model => model.Type)</div>
+            <div class="editor-field-form-control">@(Html.EditorFor(m => m.Type))</div>
+            <div class="editor-field-form-control-invalid" id="TypeError"></div>
+
+        </div>
+
+        <div class="editor-row">
+            <div class="editor-field-label">@Html.LabelFor(model => model.ChosenDay)</div>
+            <div class="editor-field-form-control">
+                @Html.EditorFor(model => model.ChosenDay)
+            </div>
+            <div class="editor-field-form-control-invalid" id="ChosenDayError"></div>
+
+        </div>
+    </div>
 
     <input type="submit" value="Save"/>
 }
