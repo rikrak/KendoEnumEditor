@@ -81,6 +81,32 @@ namespace KendoEnumEditor.Infrastructure
 
             return selectList;
         }
+
+        /// <summary>
+        /// Creates a select item list specifically to support popup editing on Kendo grids
+        /// </summary>
+        /// <param name="enumValue">Selected Enum - I.E Model.EnumProperty</param>
+        /// <param name="unselectedText">Text for the unselected options, I.E Please Select...</param>
+        /// <returns>Select Item List for a Dropdown</returns>
+        public static IEnumerable<SelectListItem> ToSelectListForKendoPopup(this Enum enumValue, string unselectedText)
+        {
+            var enums = Enum.GetValues(enumValue.GetType()).Cast<Enum>().ToArray();
+            var selectList = new List<SelectListItem>();
+
+            for (var i = 0; i < enums.Length; i++)
+            {
+                if (i == 0)
+                {
+                    selectList.Insert(0, new SelectListItem { Selected = enums[i].Equals(enumValue), Text = unselectedText, Value = Convert.ToInt32(enums[i]).ToString() });
+                }
+                else
+                {
+                    selectList.Add(new SelectListItem { Selected = enums[i].Equals(enumValue), Text = enums[i].ToDescription(), Value = Convert.ToInt32(enums[i]).ToString() });
+                }
+            }
+
+            return selectList;
+        }
     }
 
 }

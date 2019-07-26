@@ -1,6 +1,9 @@
-﻿@model KendoEnumEditor.Models.DayOfWeek
+﻿@using KendoEnumEditor.Infrastructure
+@model KendoEnumEditor.Models.DayOfWeek
 
-@(Html.Kendo()
-      .DropDownListFor(m => m)
-      .BindTo(Enum.GetNames(typeof(DayOfWeek)).ToList())
+@(
+    Html.Kendo().DropDownListFor(m => m)
+        .DataTextField("Text")
+        .DataValueField("Value")
+        .BindTo(Model.ToSelectListForKendoPopup("Please Select..."))
       )
